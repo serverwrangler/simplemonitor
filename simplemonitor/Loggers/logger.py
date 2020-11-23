@@ -41,6 +41,9 @@ class Logger:
         self.tz = cast(Optional[str], self.get_config_option("tz", default="UTC"))
         if self._global_info is None:
             self._global_info = {}
+        self.heartbeat = cast(
+            bool, self.get_config_option("heartbeat", required_type=bool, default=False)
+        )
 
     def __enter__(self) -> None:
         """Context manager entry."""
